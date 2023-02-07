@@ -1,0 +1,38 @@
+Calculation of central bearing loads for LuSEE-Night lunar instrument's
+rotation mechanism. Joe Silber, Lawrence Berkeley National Lab, 2023.  
+
+Design mean load level = 21.1 G(rms)
+Design peak load level = 105.8 G
+Total safety factor applied = 1.50
+Note relative axial load = Fa / (Z * D^2) ~ 7.2 N/mm^2 = 1041.6 lbf/in^2
+Here using approximations appropriate to this level (i.e. at 750-1000 lbf/in^2):
+
+    crossed roller     ... X1 = 1.00, Y1 = 0.44, e = 1.50, X2 = 0.67, Y2 = 0.67
+        ... max equiv load,  6207 N = 1395 lbf, occurs when accel vector is weighted like axial : radial ~ 0.639 : 1
+
+    four-point contact ... X1 = 0.60, Y1 = 1.07, e = 1.27, X2 = 1.00, Y2 = 0.00
+        ... max equiv load,  7259 N = 1632 lbf, occurs when accel vector is weighted like axial : radial ~ 1.593 : 1
+
+    radial deep groove ... X1 = 0.56, Y1 = 1.00, e = 0.44, X2 = 1.00, Y2 = 0.00
+        ... max equiv load, 10342 N = 2325 lbf, occurs when accel vector is weighted like axial : radial ~ 3.650 : 1
+
+    angular contact    ... X1 = 0.44, Y1 = 1.00, e = 0.56, X2 = 1.00, Y2 = 0.00
+        ... max equiv load, 10256 N = 2306 lbf, occurs when accel vector is weighted like axial : radial ~ 5.661 : 1
+
+
+Payload mass of 5.21 kg yields the following bearing design loads. These include all safety factors.
+In calculating equivalent loads, the moment component is estimated such that single bearings (1x) are
+assumed to have a diameter ~ 83 mm, while duplex configurations (2x bearings) are assumed to have
+an axial separation distance of ~ 40 mm.
+
+    rms radial (independent) = 1081 N = 243 lbf
+    rms thrust (independent) = 1081 N = 243 lbf
+    rms moment (independent) = 12 N*m = 105 in*lb
+    peak radial (independent) = 5405 N = 1215 lbf
+    peak thrust (independent) = 5405 N = 1215 lbf
+    peak moment (independent) = 59 N*m = 526 in*lb
+
+    crossed roller     (1x) ... peak equivalent load = 6207 N = 1395 lbf
+    four-point contact (1x) ... peak equivalent load = 7259 N = 1632 lbf
+    radial deep groove (2x) ... peak equivalent load = 10342 N = 2325 lbf
+    angular contact    (2x) ... peak equivalent load = 10256 N = 2306 lbf
