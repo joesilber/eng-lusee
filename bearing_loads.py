@@ -98,5 +98,3 @@ bearing_loads_str += '\n'
 for bearing_type, load in bearing_equiv_loads.items():
     bearing_loads_str += f'\n{tab}{bearing_type:<18} ({n_bearings[bearing_type]}x) ... peak equivalent load = {load:.0f} N = {load/N_per_lbf:.0f} lbf'
 print(bearing_loads_str)
-
-
