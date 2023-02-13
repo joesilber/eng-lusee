@@ -24,13 +24,13 @@ tab = f'{" ":4}'
 earth_1G = 9.81  # m/s^2
 
 # component sizes
-z_cg = 0.011  # mm
-payload_mass = 5.21  # kg
+z_cg = 0.0003  # m,  payload center of gravity
+payload_mass = 5.13  # kg
 single_bearing_diam = 0.083  # pitch circle diameter of single bearing
 duplex_bearing_sep = 0.040  # assumed axial separation distance between duplexed bearings (where applicable)
 
 bearing_supported_load = payload_mass * earth_1G
-bearing_supported_moment = bearing_supported_load * z_cg
+bearing_supported_moment = payload_mass * earth_1G * z_cg
 bearing_loads_stationary = {'thrust': bearing_supported_load,  # nominally upright
                             'radial': bearing_supported_load,  # when tipped 90 deg
                             'moment': bearing_supported_moment,  # when tipped 90 deg
@@ -93,7 +93,7 @@ bearing_loads_str += f'\nan axial separation distance of ~ {duplex_bearing_sep*1
 for accel_type, loads in bearing_independent_loads.items():
     bearing_loads_str += f'\n{tab}{accel_type} radial (independent) = {loads["radial"]:.0f} N = {loads["radial"]/N_per_lbf:.0f} lbf'
     bearing_loads_str += f'\n{tab}{accel_type} thrust (independent) = {loads["thrust"]:.0f} N = {loads["thrust"]/N_per_lbf:.0f} lbf'
-    bearing_loads_str += f'\n{tab}{accel_type} moment (independent) = {loads["moment"]:.0f} N*m = {loads["moment"]/Nm_per_inlb:.0f} in*lb'
+    bearing_loads_str += f'\n{tab}{accel_type} moment (independent) = {loads["moment"]:.1f} N*m = {loads["moment"]/Nm_per_inlb:.1f} in*lb'
 bearing_loads_str += '\n'
 for bearing_type, load in bearing_equiv_loads.items():
     bearing_loads_str += f'\n{tab}{bearing_type:<18} ({n_bearings[bearing_type]}x) ... peak equivalent load = {load:.0f} N = {load/N_per_lbf:.0f} lbf'
